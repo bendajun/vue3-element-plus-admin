@@ -1,0 +1,20 @@
+/* 更改element-plus 样式 */
+$--color-primary: #0BC8C1;
+
+$--app-theme-color: $--color-primary;
+$--background-color-base: #F6F7FF;
+
+// Layout
+$--app-layout-background-color: $--background-color-base;
+$--app-header-background-color: #ccc;
+$--app-aside-background-color: #338ace;
+$--app-aside-active-color: rgba(14, 185, 221, .5);
+$--app-header-height: 56px;
+$--app-tag-view-height: 30px;
+$--app-aside-width: 200px;
+
+// 暴露给js模块的变量
+:export {
+  themeColor: $--app-theme-color;
+  appAsideWidth: $--app-aside-width;
+}
