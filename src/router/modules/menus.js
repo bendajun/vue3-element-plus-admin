@@ -41,7 +41,6 @@ export default [
           },
           {
             path: '/menus2/menus2-2',
-            name: 'menus2-2',
             meta: {
               roles: ['admin', 'manager', 'visitor'],
               name: '二级菜单2',

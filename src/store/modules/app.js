@@ -1,4 +1,4 @@
-/* import * as MutationTypes from '@/store/mutation-types'
+import * as MutationTypes from '@/store/mutation-types'
 import {
   defaultRoutes,
   asyncRouteMap,
@@ -14,7 +14,7 @@ const state = {
   allRoutes: defaultRoutes,
   addRoutes: [],
   isCollapse: false, // 菜单栏是否折叠
-};
+}
 
 const getters = {
   userInfo: state => state.userInfo,
@@ -22,7 +22,7 @@ const getters = {
   allRoutes: state => state.allRoutes, // 所有的
   addRoutes: state => state.addRoutes, // 匹配的
   isCollapse: state => state.isCollapse,
-};
+}
 
 const mutations = {
   [MutationTypes.SET_USER_INFO](state, userInfo) {
@@ -46,9 +46,9 @@ const actions = {
     try {
       const { code, data } = await getUserRoles()
       if (code === 0) {
-        const roles = data.roles;
-        const userInfo = data.userInfo;
-        commit(MutationTypes.SET_ROLES, roles);
+        const roles = data.roles
+        const userInfo = data.userInfo
+        commit(MutationTypes.SET_ROLES, roles)
         commit(MutationTypes.SET_USER_INFO, userInfo)
         return Promise.resolve(data)
       }
@@ -59,17 +59,18 @@ const actions = {
   generateRoutes({ commit }, roles) {
     let accessedRoutes = []
     if (roles.includes('admin')) {
-      accessedRoutes = asyncRouteMap; // 如果是admin 直接加载所有路由 超级管理员
+      accessedRoutes = asyncRouteMap // 如果是admin 直接加载所有路由 超级管理员
     } else {
       accessedRoutes = filterAsyncRoutes(asyncRouteMap, roles) // 否则根据权限搜索路由
     }
     commit(MutationTypes.SET_ROUTER, accessedRoutes)
   }
-};
+}
+
 export default {
   namespaced: true,
   state,
   getters,
   mutations,
   actions,
-} */
+}
