@@ -1,20 +1,27 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import { getLocalToken } from '@/utils/auth'
+import {
+  importAll,
+  setDocumentTitle
+} from '@/utils'
+
+import home from './modules/home'
+import Login from '@/views/login/index.vue'
+
+const modulesFiles = require.context('./modules', false, /\.js$/)
+const modules = importAll(modulesFiles)
 
 // Route Module
-import home from './modules/home'
-import menus from './modules/menus'
-import user from './modules/user'
-
-import Login from '@/views/login/index.vue'
+let asyncRouteMap = []
+for (const key in modules) {
+  asyncRouteMap = asyncRouteMap.concat(modules[key])
+}
 
 export const defaultRoutes = [
   {
     path: '/',
-    redirect: {
-      name: 'home'
-    },
+    redirect: '/home',
     hidden: true,
   },
   {
@@ -25,12 +32,7 @@ export const defaultRoutes = [
   },
 ]
 
-export const asyncRouteMap = [
-  ...home,
-  ...menus,
-  ...user,
-]
-
+// 捕获所有的路由，和错误路由，跟路由位置没有关系
 export const errorRoutes = [
   {
     path: '/:notFoundPath(.*)*',

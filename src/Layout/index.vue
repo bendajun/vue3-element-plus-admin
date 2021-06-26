@@ -8,6 +8,14 @@ import { defineComponent } from 'vue'
 import AppAside from './components/AppAside.vue'
 
 export default defineComponent({
+  watch: {
+    $route: {
+      immediate: true,
+      handler(val) {
+        console.log(val)
+      }
+    }
+  },
   components: {
     AppAside
   },
