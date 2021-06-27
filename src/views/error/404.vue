@@ -18,7 +18,7 @@ export default defineComponent({
   },
 })
 /*
-  当我访问一个不存在的路径的时候，如/is/does/not/exist，会跳转到当前页面，路由信息如下
+  当访问一个不存在的路径的时候，如/is/does/not/exist，会跳转到当前页面，路由信息如下
   fullPath: "/is/does/not/exist"
   hash: ""
   href: "/is/does/not/exist"

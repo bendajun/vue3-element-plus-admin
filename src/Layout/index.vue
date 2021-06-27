@@ -1,39 +1,52 @@
 <template>
   <div class="app-layout">
-    <app-aside />
+    <app-aside class="app-aside" :style="{width: isCollapse ? 'auto' : appAsideWidth }"></app-aside>
+    <div class="app-body">
+      <app-header class="app-header"></app-header>
+      <app-tag-view class="app-tag-view"></app-tag-view> <!--不需要此需求，去掉这个和对应组件和store/tagView.js文件即可-->
+      <app-main class="app-main"></app-main>
+    </div>
   </div>
 </template>
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+import { useStore } from 'vuex'
+
 import AppAside from './components/AppAside.vue'
+import AppHeader from './components/AppHeader.vue'
+import AppTagView from './components/AppTagView.vue'
+import AppMain from './components/AppMain.vue'
+
+import { appAsideWidth } from '@/style/var.scss'
 
 export default defineComponent({
-  watch: {
-    $route: {
-      immediate: true,
-      handler(val) {
-        console.log(val)
-      }
+  components: {
+    AppAside,
+    AppHeader,
+    AppTagView,
+    AppMain,
+  },
+  setup() {
+    const store = useStore()
+    return {
+      appAsideWidth,
+      isCollapse: computed(() => store.getters['app/isCollapse']),
     }
   },
-  components: {
-    AppAside
-  },
-  setup() {},
 })
 </script>
 
 <style lang="scss" scoped>
 @import '@/style/var.scss';
 .app-layout {
-  height: 100vh;
   display: flex;
+  height: 100vh;
   overflow: hidden;
   background-color: $--app-layout-background-color;
 }
 .app-aside {
-  width: $--app-aside-width;
   flex-shrink: 0;
+  width: $--app-aside-width;
 }
 .app-body {
   flex: 1;

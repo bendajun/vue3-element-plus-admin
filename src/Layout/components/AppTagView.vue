@@ -2,7 +2,7 @@
   <div class="app-tag-view">
     <el-tag
       class="tags"
-      :class="{ isActive: $route.path === tag.path }"
+      :class="{ isActive: route.path === tag.path }"
       v-for="tag in visitedViews"
       :closable="!tag.affix"
       :key="tag.path"
@@ -15,74 +15,78 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
+import { defineComponent, watch, onMounted, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
-const {
-  mapState,
-  mapMutations,
-} = createNamespacedHelpers('tagView');
-
-export default {
+export default defineComponent({
   name: 'AppTagView',
-  data() {
-    return {};
-  },
-  watch: {
-    $route: {
-      handler() {
-        this.addVisitedTags();
-      },
-    },
-  },
-  computed: {
-    ...mapState(['visitedViews']),
-  },
-  created() {
-    this.initVisitedViews();
-    this.addVisitedTags();
-  },
-  methods: {
-    ...mapMutations({
-      initVisitedView: 'INIT_VISTED_VIEW',
-      addVisitedView: 'ADD_VISTED_VIEW',
-      delVisitedView: 'DEL_VISTED_VIEW',
-    }),
-    isAffix(tag) {
-      return tag.affix;
-    },
-    initVisitedViews() {
-      this.initVisitedView(this.$store.getters['app/allRoutes']);
-    },
-    addVisitedTags() {
-      const { name } = this.$route;
-      if (name) {
-        this.addVisitedView(this.$route);
+  setup() {
+    const router = useRouter()
+    const route = useRoute()
+    const store = useStore()
+    const visitedViews = computed(() => store.state.tagView.visitedViews)
+    const initVisitedView = (allRoutes) => store.commit('tagView/INIT_VISTED_VIEW', allRoutes)
+    const addVisitedView = (route) => store.commit('tagView/ADD_VISTED_VIEW', route)
+    const delVisitedView = (view) => store.commit('tagView/DEL_VISTED_VIEW', view)
+
+    const isAffix = tag => tag.affix
+
+    const initVisitedViews = () => {
+      initVisitedView(store.getters['app/allRoutes'])
+    }
+
+    const addVisitedTags = () => {
+      const { meta } = route
+      if (meta && meta.name) {
+        addVisitedView(route)
       }
-    },
-    closeSelectedTag(view) {
-      const oldVisitedViews = this.visitedViews;
-      this.delVisitedView(view);
-      if (view.path === this.$route.path) {
-        this.toLastView(oldVisitedViews, view);
-      }
-    },
-    handleToRoute(view) {
-      if (this.$route.path !== view.path) {
-        this.$router.push({
-          path: view.path,
-        });
-      }
-    },
-    toLastView(oldVisitedViews, view) {
+    }
+
+    const toLastView = (oldVisitedViews, view) => {
       const index = oldVisitedViews.findIndex(item => {
-        return item.path === view.path;
-      });
-      this.$router.push({
-        path: this.visitedViews[index - 1].path,
-      });
-    },
+        return item.path === view.path
+      })
+      router.push({
+        path: visitedViews.value[index - 1].path,
+      })
+    }
+
+    const closeSelectedTag = (view) => {
+      const oldVisitedViews = visitedViews.value
+      delVisitedView(view)
+      if (view.path === route.path) {
+        toLastView(oldVisitedViews, view)
+      }
+    }
+
+    const handleToRoute = (view) => {
+      if (route.path !== view.path) {
+        router.push({
+          path: view.path,
+        })
+      }
+    }
+
+    onMounted(() => {
+      initVisitedViews()
+      addVisitedTags()
+    })
+
+    watch(route, () => {
+      addVisitedTags()
+    })
+
+    return {
+      route,
+      visitedViews,
+      isAffix,
+      handleToRoute,
+      closeSelectedTag,
+    }
   },
-};
+})
+
 </script>
 
 <style lang="scss" scoped>
@@ -90,19 +94,19 @@ export default {
 .app-tag-view {
   display: flex;
   align-items: center;
-  background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
+  background: #fff;
 }
 .tags {
-  height: 80%;
-  margin: 0 2px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 80%;
+  margin: 0 2px;
   cursor: pointer;
 }
-::v-deep.isActive  {
+:deep(.isActive) {
   color: #fff;
   background: $--app-theme-color;
   .el-icon-close {

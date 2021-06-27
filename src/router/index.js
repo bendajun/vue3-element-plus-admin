@@ -36,7 +36,6 @@ export const errorRoute = {
 // 无须鉴权的白名单路由
 const whiteListRoutes = [
   '/login',
-  'test',
 ]
 
 const router = createRouter({
@@ -47,7 +46,7 @@ const router = createRouter({
 
 // next参数在Vue-roputer 4.x的版本中不再建议使用，使用return false 终止本次导航。 或者不使用return，return true， return 新的导航都可以
 // 官方也弃用了addRoutes这个方法了
-router.beforeEach(async(to, from) => {
+router.beforeEach(async(to) => {
   if (getLocalToken()) { // 存在token时，走这里
     if (!store.getters['app/roles']) { // 没有用户角色先获取角色，根据角色动态渲染路由
       const data = await store.dispatch('app/fetchRoles')

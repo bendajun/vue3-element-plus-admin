@@ -1,8 +1,8 @@
 <template>
   <div class="app-menu-item">
     <el-submenu v-if="!menu.hidden && children && children.length" :index="menu.path">
-      <template slot="title">
-        <g-svg-icon :icon-class="menu.meta.icon" />
+      <template v-slot:title>
+        <!-- <g-svg-icon :icon-class="menu.meta.icon" /> -->
         <span>{{ menu.meta.name }}</span>
       </template>
       <app-menu-item
@@ -12,10 +12,10 @@
       ></app-menu-item>
     </el-submenu>
     <el-menu-item v-if="!menu.hidden && !children" :index="menu.path">
-      <template slot="title">
+      <template v-slot:title>
         <div class="app-item">
-          <g-svg-icon :icon-class="menu.meta.icon" />
-          <span slot="title">{{ menu.meta.name }}</span>
+          <!-- <g-svg-icon :icon-class="menu.meta.icon" /> -->
+          <span>{{ menu.meta.name }}</span>
         </div>
       </template>
     </el-menu-item>
@@ -23,8 +23,9 @@
 </template>
 
 <script>
+import { defineComponent, computed } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'AppMenuItem',
   props: {
     menu: {
@@ -32,12 +33,15 @@ export default {
       required: true,
     },
   },
-  computed: {
-    children() {
-      return this.menu && this.menu.children;
+  setup(props) {
+    const children = computed(() => props.menu && props.menu.children)
+
+    return {
+      children
     }
-  },
-};
+  }
+})
+
 </script>
 
 <style lang="scss" scoped>
@@ -48,10 +52,10 @@ export default {
     background-color: $--app-aside-active-color;
   }
 }
-.el-menu-item:hover,::v-deep .el-submenu__title:hover { // 鼠标滑过菜单时的背景颜色
+.el-menu-item:hover,:deep(.el-submenu__title:hover) { // 鼠标滑过菜单时的背景颜色
   background-color: $--app-aside-active-color!important;
 }
-::v-deep .el-submenu__title i { // 右侧下拉图标颜色
+:deep(el-submenu__title) i { // 右侧下拉图标颜色
   color: #fff;
 }
 // 当前菜单嵌套3层时，样式的递归，如需嵌套更多，再添加即可
@@ -70,11 +74,11 @@ export default {
   align-items: center;
   padding: 0px!important;
   .app-item {
+    display: flex;
+    align-items: center;
     width: 80%;
     height: 65%;
     padding-left: 40px;
-    display: flex;
-    align-items: center;
     border-radius: 20px;
   }
 }
