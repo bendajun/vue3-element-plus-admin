@@ -1,3 +1,4 @@
+import { markRaw } from 'vue'
 import Layout from '@/Layout/index.vue'
 
 export default [
@@ -18,7 +19,7 @@ export default [
           name: '用户管理1',
           icon: 'renjijiaohu',
         },
-        component: () => import('@/views/user/index.vue')
+        component: () => markRaw(import('@/views/user/index.vue'))
       },
       {
         path: '/user-two',
@@ -27,7 +28,7 @@ export default [
           name: '用户管理2',
           icon: 'renshidangan',
         },
-        component: () => import('@/views/user/userTwo/index.vue')
+        component: () => markRaw(import('@/views/user/userTwo/index.vue'))
       }
     ]
   },

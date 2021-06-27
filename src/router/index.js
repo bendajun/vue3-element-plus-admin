@@ -1,3 +1,4 @@
+import { markRaw } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import store from '@/store'
 
@@ -21,7 +22,7 @@ export const defaultRoutes = [
     path: '/login',
     name: 'login',
     hidden: true,
-    component: Login,
+    component: markRaw(Login),
   },
 ]
 
@@ -30,7 +31,7 @@ export const errorRoute = {
   path: '/:notFoundPath(.*)*',
   hidden: true,
   name: 'notFound',
-  component: () => import(/* webpackChunkName: 'error' */ '@/views/error/404.vue'),
+  component: () => markRaw(import(/* webpackChunkName: 'error' */ '@/views/error/404.vue')),
 }
 
 // 无须鉴权的白名单路由

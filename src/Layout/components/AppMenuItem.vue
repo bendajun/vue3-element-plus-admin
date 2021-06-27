@@ -2,7 +2,7 @@
   <div class="app-menu-item">
     <el-submenu v-if="!menu.hidden && children && children.length" :index="menu.path">
       <template v-slot:title>
-        <!-- <g-svg-icon :icon-class="menu.meta.icon" /> -->
+        <g-svg-icon :icon-class="menu.meta.icon" />
         <span>{{ menu.meta.name }}</span>
       </template>
       <app-menu-item
@@ -14,7 +14,7 @@
     <el-menu-item v-if="!menu.hidden && !children" :index="menu.path">
       <template v-slot:title>
         <div class="app-item">
-          <!-- <g-svg-icon :icon-class="menu.meta.icon" /> -->
+          <g-svg-icon :icon-class="menu.meta.icon" />
           <span>{{ menu.meta.name }}</span>
         </div>
       </template>

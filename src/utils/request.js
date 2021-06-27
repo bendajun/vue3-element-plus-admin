@@ -1,4 +1,6 @@
 import axios from 'axios'
+import router from '@/router'
+import { ElMessageBox } from 'element-plus'
 
 import { getLocalToken, removeLocalToken } from '@/utils/auth'
 
@@ -17,7 +19,26 @@ export default function request(conf) {
   // 3.设置响应拦截器
   instance.interceptors.response.use(async(response) => {
     const res = response.data
-    return res
+    if (res.code !== 0) { // 0代表请求成功
+      // 508:非法的token; 512:其他客户端登录了;  514:Token 过期了; 自己根据业务定制即可
+      if (res.code === 508 || res.code === 512 || res.code === 514) {
+        removeLocalToken()
+        await ElMessageBox.confirm('登录信息已过期，请重新登录！', '确定登出', {
+          confirmButtonText: '重新登录',
+          showCancelButton: false,
+          type: 'warning',
+        })
+        router.push({
+          path: '/login',
+          query: {
+            redirect: router.currentRoute.fullPath,
+          },
+        })
+        location.reload()
+      }
+    } else {
+      return res
+    }
   })
 
   // 4.发送网络请求

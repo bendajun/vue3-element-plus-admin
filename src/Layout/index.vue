@@ -3,7 +3,7 @@
     <app-aside class="app-aside" :style="{width: isCollapse ? 'auto' : appAsideWidth }"></app-aside>
     <div class="app-body">
       <app-header class="app-header"></app-header>
-      <app-tag-view class="app-tag-view"></app-tag-view> <!--不需要此需求，去掉这个和对应组件和store/tagView.js文件即可-->
+      <app-tag-view class="app-tag-view"></app-tag-view> <!--不需要此需求，去掉这个和store/tagView.js文件即可-->
       <app-main class="app-main"></app-main>
     </div>
   </div>

@@ -17,10 +17,10 @@ export function dateFormat(date, formatter = 'YYYY-MM-DD HH:mm') {
  * @param {string} formatter 格式化模板
  */
 export function dateAndWeekFormat(date = new Date(), formatter = 'MM-DD') {
-  var mydate = new Date(date);
-  var myddy = mydate.getDay(); // getDay可以获取到一周的周几
-  var weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-  return dayjs(date).format(formatter) + weekday[myddy];
+  var mydate = new Date(date)
+  var myddy = mydate.getDay() // getDay可以获取到一周的周几
+  var weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+  return dayjs(date).format(formatter) + weekday[myddy]
 }
 
 /**
@@ -81,7 +81,7 @@ export function sevenDate(formatter = 'YYYY-MM-DD') {
  * @param {Date | string | number} date 日期
  * @param {string} formatter 格式化模板
  */
- export function getWeekFormat(date, formatter = 'YYYY-MM-DD') {
+export function getWeekFormat(date, formatter = 'YYYY-MM-DD') {
   let index = dayjs(date).day()
   // 因为获取星期天的话，index为0而不是7
   index = index === 0 ? 7 : index

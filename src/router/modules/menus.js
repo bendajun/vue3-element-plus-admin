@@ -1,3 +1,4 @@
+import { markRaw } from 'vue'
 import Layout from '@/Layout/index.vue'
 
 export default [
@@ -9,7 +10,7 @@ export default [
       name: '菜单',
       icon: 'caidan'
     },
-    component: Layout,
+    component: markRaw(Layout),
     children: [
       {
         path: '/menus1',
@@ -18,7 +19,7 @@ export default [
           name: '一级菜单1',
           icon: 'liebiao',
         },
-        component: () => import('@/views/menus/index.vue'),
+        component: () => markRaw(import('@/views/menus/index.vue')),
       },
       {
         path: '/menus2',
@@ -28,7 +29,7 @@ export default [
           name: '一级菜单2',
           icon: 'liebiao',
         },
-        component: () => import('@/views/menus/subMenus/index.vue'),
+        component: () => markRaw(import('@/views/menus/subMenus/index.vue')),
         children: [
           {
             path: '/menus2/menus2-1',
@@ -37,7 +38,7 @@ export default [
               name: '二级菜单1',
               icon: 'liebiao',
             },
-            component: () => import('@/views/menus/subMenus/threeMenus/index.vue'),
+            component: () => markRaw(import('@/views/menus/subMenus/threeMenus/index.vue')),
           },
           {
             path: '/menus2/menus2-2',
@@ -46,7 +47,7 @@ export default [
               name: '二级菜单2',
               icon: 'liebiao',
             },
-            component: () => import('@/views/menus/subMenus/threeMenus/twoIndex.vue'),
+            component: () => markRaw(import('@/views/menus/subMenus/threeMenus/twoIndex.vue')),
           },
         ]
       },

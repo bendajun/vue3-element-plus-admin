@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, ref, toRefs } from 'vue'
+import { defineComponent, onBeforeMount, reactive, ref, toRefs } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import {
@@ -35,7 +35,10 @@ const handleToken = () => {
 
 export default defineComponent({
   setup() {
-    handleToken()
+    onBeforeMount(() => {
+      handleToken()
+    })
+
     const router = useRouter()
     const route = useRoute()
     const loginFormRef = ref(null)
