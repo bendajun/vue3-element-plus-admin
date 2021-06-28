@@ -17,7 +17,7 @@
           v-for="menu in allRoutes"
           :key="menu.name"
           :menu="menu"
-        ></app-menu-item>
+        />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -33,7 +33,7 @@ import AppMenuItem from './AppMenuItem'
 export default defineComponent({
   name: 'AppAside',
   components: {
-    AppMenuItem,
+    AppMenuItem
   },
   setup() {
     const route = useRoute()
@@ -41,14 +41,14 @@ export default defineComponent({
     return {
       menuActive: computed(() => route.path),
       allRoutes: computed(() => store.getters['app/allRoutes']),
-      isCollapse: computed(() => store.getters['app/isCollapse']),
+      isCollapse: computed(() => store.getters['app/isCollapse'])
     }
   }
 })
 </script>
 
 <style lang="scss" scoped>
-@import "@/style/var.scss";
+@import '@/style/var.scss';
 .app-aside {
   padding-bottom: 36px;
   background-color: $--app-aside-background-color;
@@ -58,7 +58,7 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   height: $--app-header-height;
-  border-bottom: 1px solid rgba(14, 185, 221, .5);
+  border-bottom: 1px solid rgba(14, 185, 221, 0.5);
   color: #fff;
 }
 :deep(.el-scrollbar) {

@@ -15,7 +15,6 @@ export default [
       {
         path: '/home-one',
         meta: {
-          keepAlive: true,
           roles: ['admin', 'manager', 'visitor'],
           name: '首页列表',
           icon: 'liebiao',
@@ -26,6 +25,7 @@ export default [
       {
         path: '/home-two',
         meta: {
+          keepAlive: true,
           roles: ['admin', 'manager', 'visitor'],
           name: '首页列表2',
           icon: 'yewubaobiao',

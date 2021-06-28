@@ -29,12 +29,8 @@ export default defineComponent({
     const initVisitedView = (allRoutes) => store.commit('tagView/INIT_VISTED_VIEW', allRoutes)
     const addVisitedView = (route) => store.commit('tagView/ADD_VISTED_VIEW', route)
     const delVisitedView = (view) => store.commit('tagView/DEL_VISTED_VIEW', view)
-
     const isAffix = tag => tag.affix
-
-    const initVisitedViews = () => {
-      initVisitedView(store.getters['app/allRoutes'])
-    }
+    const initVisitedViews = () => initVisitedView(store.getters['app/allRoutes'])
 
     const addVisitedTags = () => {
       const { meta } = route

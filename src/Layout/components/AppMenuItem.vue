@@ -1,6 +1,9 @@
 <template>
   <div class="app-menu-item">
-    <el-submenu v-if="!menu.hidden && children && children.length" :index="menu.path">
+    <el-submenu
+      v-if="!menu.hidden && children && children.length"
+      :index="menu.path"
+    >
       <template v-slot:title>
         <g-svg-icon :icon-class="menu.meta.icon" />
         <span>{{ menu.meta.name }}</span>
@@ -30,32 +33,33 @@ export default defineComponent({
   props: {
     menu: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   setup(props) {
-    const children = computed(() => props.menu && props.menu.children)
-
     return {
-      children
+      children: computed(() => props.menu && props.menu.children)
     }
   }
 })
-
 </script>
 
 <style lang="scss" scoped>
-@import "@/style/var.scss";
-.el-menu-item.is-active { // 菜单选中时的背景颜色
+@import '@/style/var.scss';
+.el-menu-item.is-active {
+  // 菜单选中时的背景颜色
   .app-item {
     color: #fff;
     background-color: $--app-aside-active-color;
   }
 }
-.el-menu-item:hover,:deep(.el-submenu__title:hover) { // 鼠标滑过菜单时的背景颜色
-  background-color: $--app-aside-active-color!important;
+.el-menu-item:hover,
+:deep(.el-submenu__title:hover) {
+  // 鼠标滑过菜单时的背景颜色
+  background-color: $--app-aside-active-color !important;
 }
-:deep(el-submenu__title) i { // 右侧下拉图标颜色
+:deep(el-submenu__title) i {
+  // 右侧下拉图标颜色
   color: #fff;
 }
 // 当前菜单嵌套3层时，样式的递归，如需嵌套更多，再添加即可
@@ -68,11 +72,13 @@ export default defineComponent({
     }
   }
 }
-.el-menu-item,.el-menu-item.is-active { // 菜单的样式
+.el-menu-item,
+.el-menu-item.is-active {
+  // 菜单的样式
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px!important;
+  padding: 0px !important;
   .app-item {
     display: flex;
     align-items: center;
@@ -88,7 +94,7 @@ export default defineComponent({
 </style>
 
 <style lang="scss">
-@import "@/style/var.scss";
+@import '@/style/var.scss';
 // 下面都是折叠后的样式
 .el-menu--collapse .el-submenu__title span {
   display: none;
@@ -99,7 +105,7 @@ export default defineComponent({
 .el-menu--vertical {
   background: $--app-aside-active-color;
   .el-submenu__title {
-    padding-left: 40px!important;
+    padding-left: 40px !important;
   }
 }
 </style>

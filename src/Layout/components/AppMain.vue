@@ -2,7 +2,11 @@
   <div class="app-main">
     <router-view v-slot="{ Component, route }">
       <keep-alive>
-        <component v-if="route.meta.keepAlive" :is="Component" :key="route.path" />
+        <component
+          v-if="route.meta.keepAlive"
+          :is="Component"
+          :key="route.path"
+        />
       </keep-alive>
       <component
         v-if="!route.meta.keepAlive"
@@ -17,9 +21,8 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'AppMain',
+  name: 'AppMain'
 })
-
 </script>
 
 <style lang="scss" scoped>
