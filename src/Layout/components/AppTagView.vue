@@ -87,24 +87,28 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "@/style/var.scss";
+
 .app-tag-view {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #d8dce5;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
   background: #fff;
+  border-bottom: 1px solid #d8dce5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 0 3px 0 rgba(0, 0, 0, 0.04);
 }
+
 .tags {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 80%;
   margin: 0 2px;
   cursor: pointer;
 }
+
 :deep(.isActive) {
   color: #fff;
   background: $--app-theme-color;
+
   .el-icon-close {
     color: #fff;
   }

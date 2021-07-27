@@ -29,7 +29,7 @@ export default defineComponent({
   width: 1em;
   height: 1em;
   margin-right: 4px;
-  fill: currentColor;
   overflow: hidden;
+  fill: currentColor;
 }
 </style>

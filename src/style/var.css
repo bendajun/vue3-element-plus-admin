@@ -1,6 +1,7 @@
 @charset "UTF-8";
+/* stylelint-disable */
 /* 更改element-plus 样式 */
 :export {
-  themeColor: #0BC8C1;
+  themeColor: #0bc8c1;
   appAsideWidth: 200px;
 }

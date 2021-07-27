@@ -46,6 +46,25 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/style/var.scss';
+
+.el-menu-item,
+.el-menu-item.is-active {
+  // 菜单的样式
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+
+  .app-item {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    height: 65%;
+    padding-left: 40px;
+    border-radius: 20px;
+  }
+}
+
 .el-menu-item.is-active {
   // 菜单选中时的背景颜色
   .app-item {
@@ -53,11 +72,13 @@ export default defineComponent({
     background-color: $--app-aside-active-color;
   }
 }
+
 .el-menu-item:hover,
 :deep(.el-submenu__title:hover) {
   // 鼠标滑过菜单时的背景颜色
   background-color: $--app-aside-active-color !important;
 }
+
 :deep(el-submenu__title) i {
   // 右侧下拉图标颜色
   color: #fff;
@@ -72,22 +93,7 @@ export default defineComponent({
     }
   }
 }
-.el-menu-item,
-.el-menu-item.is-active {
-  // 菜单的样式
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0px !important;
-  .app-item {
-    display: flex;
-    align-items: center;
-    width: 80%;
-    height: 65%;
-    padding-left: 40px;
-    border-radius: 20px;
-  }
-}
+
 .el-menu {
   border: none;
 }
@@ -99,11 +105,14 @@ export default defineComponent({
 .el-menu--collapse .el-submenu__title span {
   display: none;
 }
+
 .el-menu--collapse .el-submenu__title .el-submenu__icon-arrow {
   display: none;
 }
+
 .el-menu--vertical {
   background: $--app-aside-active-color;
+
   .el-submenu__title {
     padding-left: 40px !important;
   }

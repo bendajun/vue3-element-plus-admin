@@ -89,26 +89,30 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "@/style/var.scss";
+
 .login {
-  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
   overflow: hidden;
   background: url(../../assets/img/login-bg.jpg) no-repeat top center;
   background-size: cover;
 }
+
 .login-form {
   width: 260px;
   padding: 40px;
-  border-radius: 10px;
   background-color: #fff;
+  border-radius: 10px;
+
   &__title {
-    text-align: center;
     margin-bottom: 30px;
     font-size: 24px;
+    text-align: center;
   }
 }
+
 .el-button {
   width: 100%;
 }

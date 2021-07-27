@@ -48,16 +48,18 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import "@/style/var.scss";
+
 .app-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
   height: $--app-header-height;
+  padding: 0 12px;
   // background-color: $--app-header-background-color;
   // 不要渐变色注释即可，然后使用上方的背景色
-  background:linear-gradient(to right, rgba(14, 185, 221, 1), rgba(108, 66, 183, 1));
-  box-shadow: 3px 3px 3px 3px rgba(14, 185, 221, .1);
+  background: linear-gradient(to right, rgba(14, 185, 221, 1), rgba(108, 66, 183, 1));
+  box-shadow: 3px 3px 3px 3px rgba(14, 185, 221, 0.1);
+
   &__fold {
     width: 30px;
     cursor: pointer;

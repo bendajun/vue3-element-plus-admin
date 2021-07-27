@@ -27,6 +27,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/style/var.scss';
+
 .app-main {
   padding: 12px;
 }

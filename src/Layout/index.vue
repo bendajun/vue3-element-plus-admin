@@ -38,25 +38,31 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/style/var.scss';
+
 .app-layout {
   display: flex;
   height: 100vh;
   overflow: hidden;
   background-color: $--app-layout-background-color;
 }
+
 .app-aside {
   flex-shrink: 0;
   width: $--app-aside-width;
 }
+
 .app-body {
   flex: 1;
 }
+
 .app-header {
   height: $--app-header-height;
 }
+
 .app-tag-view {
   height: $--app-tag-view-height;
 }
+
 .app-main {
   height: calc(100vh - #{$--app-header-height});
 }

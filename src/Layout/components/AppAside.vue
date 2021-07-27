@@ -49,18 +49,21 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/style/var.scss';
+
 .app-aside {
   padding-bottom: 36px;
   background-color: $--app-aside-background-color;
 }
+
 .app-aside__logo {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: $--app-header-height;
-  border-bottom: 1px solid rgba(14, 185, 221, 0.5);
   color: #fff;
+  border-bottom: 1px solid rgba(14, 185, 221, 0.5);
 }
+
 :deep(.el-scrollbar) {
   height: 100%;
 }

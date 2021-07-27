@@ -3,6 +3,7 @@
 const webpack = require('webpack')
 const { resolve } = require('path')
 const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+const StyleLintWebpackPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
   // eslint-loader 是否在保存的时候检查
@@ -21,6 +22,15 @@ module.exports = {
         },
       },
     },
+    plugins: [
+      new StyleLintWebpackPlugin({
+        files: ['**/*.{vue,htm,html,css,scss,sass}'],
+        fix: false, // 是否自动修复,不建议
+        cache: true, // 是否缓存
+        emitErrors: true,
+        failOnError: true, // 找到的警告将始终发出，必须设置为true，因为在.stylelintrc.js文件中，已将所有规则设置为了警告
+      }),
+    ],
   },
   chainWebpack(config) {
     const {
