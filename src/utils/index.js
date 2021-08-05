@@ -32,7 +32,7 @@ export function setDocumentTitle(title) {
  * @param {Array} arr 需要扁平化的对象数组，如 [{},{ children: [{}] }]
  */
 export function flatArray(arr) {
-  let flatArr = []
+  const flatArr = []
   arr.forEach(item => {
     flatArr.push({ ...item })
     if (item.children && item.children.length !== 0) {

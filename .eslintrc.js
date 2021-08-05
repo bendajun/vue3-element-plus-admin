@@ -15,7 +15,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'space-before-function-paren': ['error', 'never'], // 函数名后面是否需要个空格
     'comma-dangle': ['off', 'always'], // 是否可以在最后一项添加逗号
-    'prefer-const': ['off', 'always'], // 关闭必须使用const来代替let定义未改变的变量
+    'prefer-const': 'warn', // 必须使用const来代替let定义未改变的变量
   },
   overrides: [
     {

@@ -29,7 +29,7 @@ export default defineComponent({
   setup() {
     const store = useStore()
     return {
-      appAsideWidth,
+        appAsideWidth,
       isCollapse: computed(() => store.getters['app/isCollapse']),
     }
   },
@@ -38,7 +38,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/style/var.scss';
-
 .app-layout {
   display: flex;
   height: 100vh;

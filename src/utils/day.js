@@ -64,7 +64,7 @@ export function dates(type, formatter = 'YYYY-MM-DD HH:mm:ss') {
  * @param {string} formatter 格式化模板
  */
 export function sevenDate(formatter = 'YYYY-MM-DD') {
-  let sevenDays = [
+  const sevenDays = [
     dayjs().subtract(6, 'day').format(formatter),
     dayjs().subtract(5, 'day').format(formatter),
     dayjs().subtract(4, 'day').format(formatter),
@@ -85,14 +85,14 @@ export function getWeekFormat(date, formatter = 'YYYY-MM-DD') {
   let index = dayjs(date).day()
   // 因为获取星期天的话，index为0而不是7
   index = index === 0 ? 7 : index
-  let weekArr = []
+  const weekArr = []
   for (let i = 1; i <= index - 1; i++) {
-    let day = dayjs(date).subtract(i, 'day').format(formatter)
+    const day = dayjs(date).subtract(i, 'day').format(formatter)
     weekArr.unshift(day)
   }
   weekArr.push(dayjs(date).format(formatter))
   for (let i = 1; i <= 7 - index; i++) {
-    let day = dayjs(date).subtract(-i, 'day').format(formatter)
+    const day = dayjs(date).subtract(-i, 'day').format(formatter)
     weekArr.push(day)
   }
   return weekArr
@@ -107,7 +107,7 @@ export function getWeekFormat(date, formatter = 'YYYY-MM-DD') {
 export function getDayArrBetweenStartAndEnd(startDay, endDay, formatter = 'YYYY-MM-DD') {
   // 获取两个日期之间隔的天数的数量
   const num = (dayjs(endDay).diff(startDay, 'day') - 1)
-  let dateArr = [startDay]
+  const dateArr = [startDay]
   if (num > 0) {
     let lastDay = startDay
     for (let i = 1; i <= num; i++) {
@@ -117,8 +117,8 @@ export function getDayArrBetweenStartAndEnd(startDay, endDay, formatter = 'YYYY-
     }
   }
   dateArr.push(endDay)
-  let weekday = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
-  let dateAndWeekArr = []
+  const weekday = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+  const dateAndWeekArr = []
   dateArr.forEach(item => {
     const index = dayjs(item).day()
     dateAndWeekArr.push({
@@ -146,9 +146,9 @@ export function getLastOrNextWeekOneDay(date, number, formatter = 'YYYY-MM-DD') 
  * @param {string} formatter 格式化模板
  */
 export function getLastDay(date, step = 0, formatter = 'YYYY-MM-DD') {
-  let ymd = dayjs(+date ? new Date(+date) : date).format(formatter)
-  let ymdArr = ymd.split('-')
-  let newMonth = Number(ymdArr[1]) + step
-  let d = new Date(Number(ymdArr[0]), newMonth, 0)
+  const ymd = dayjs(+date ? new Date(+date) : date).format(formatter)
+  const ymdArr = ymd.split('-')
+  const newMonth = Number(ymdArr[1]) + step
+  const d = new Date(Number(ymdArr[0]), newMonth, 0)
   return dateFormat(d, formatter)
 }

@@ -7,7 +7,23 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "stylelint": "stylelint src/**/*.{html,vue,css,sass,scss} --fix"
+    "eslint": "eslint src/**/*{js,vue}",
+    "eslintfix": "eslint src/**/*{js,vue} --fix",
+    "stylelint": "stylelint src/**/*.{html,vue,css,sass,scss}",
+    "stylelintfix": "stylelint src/**/*.{html,vue,css,sass,scss} --fix",
+    "prepare": "husky install",
+    "postinstall": "npm run prepare"
+  },
+  "hooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*{js,vue}": [
+      "npm run eslint"
+    ],
+    "src/**/*.{html,vue,css,sass,scss}": [
+      "npm run stylelint"
+    ]
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -38,6 +54,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.0.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^11.1.1",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "stylelint": "^13.13.1",

@@ -7,7 +7,7 @@
 module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
   plugins: ['stylelint-scss'],
-  defaultSeverity: 'warning',
+  defaultSeverity: 'error',
   rules: {
     indentation: 2,
     'selector-pseudo-class-no-unknown': [true, {
