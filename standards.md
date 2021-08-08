@@ -7,19 +7,22 @@
   * css命名要语义化：一级： app 二级嵌套： app-header 三级嵌套： app-header__title 四级嵌套： app-header__title-name
   * html: 属性名放在前面，@click点击事件放在后面，属性和事件超过三个就要换行。组件无插槽内容的全部使用单标签闭合。
 
-
 # commit提交规范
-``` js
-build：主要目的是修改项目构建系统(例如 glup，webpack，rollup 的配置等)的提交
-ci：主要目的是修改项目继续集成流程(例如 Travis，Jenkins，GitLab CI，Circle等)的提交
-docs：文档更新
-feat：新增功能
-merge：分支合并 Merge branch ? of ?
-fix：bug 修复
-perf：性能, 体验优化
-refactor：重构代码(既没有新增功能，也没有修复 bug)
-style：不影响程序逻辑的代码修改(修改空白字符，格式缩进，补全缺失的分号等，没有改变代码逻辑)
-test：新增测试用例或是更新现有测试
-revert：回滚某个更早之前的提交
-chore：不属于以上类型的其他类型
-```
+  ``` js
+  build：主要目的是修改项目构建系统(例如 glup，webpack，rollup 的配置等)的提交
+  ci：主要目的是修改项目继续集成流程(例如 Travis，Jenkins，GitLab CI，Circle等)的提交
+  docs：文档更新
+  feat：新增功能
+  merge：分支合并 Merge branch ? of ?
+  fix：bug 修复
+  perf：性能, 体验优化
+  refactor：重构代码(既没有新增功能，也没有修复 bug)
+  style：不影响程序逻辑的代码修改(修改空白字符，格式缩进，补全缺失的分号等，没有改变代码逻辑)
+  test：新增测试用例或是更新现有测试
+  revert：回滚某个更早之前的提交
+  chore：不属于以上类型的其他类型
+  ```
+
+# 关于husky
+  * 采用的husky是husky@4的版本，高版本的husky发生了重大的变化，在使用的过程中，发现对git版本和系统以及npm和yarn的表现都不同，且有很多坑。
+  * 所以还是采用的是低版本。

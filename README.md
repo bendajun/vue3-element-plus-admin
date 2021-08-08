@@ -21,6 +21,12 @@
   * 因为是将路由和路由懒加载组件存放在vuex中的，所以使用了markRaw对组件进行了标记，防止进行Proxy代理
   * 但是目前处理方式未统一处理，后续优化
 
+### Vue3核心Api实现
+  * [步步注释为您讲解Vue3核心Api](https://github.com/bendajun/vue3-sound-code)
+
+### Vuex4源码实现
+  * [带你一步步实现Vuex4](https://github.com/bendajun/vue3-vuex-sound-code)
+
 ### 卑微
   * 如果这个项目帮助了您，请动动您的小手帮我点个star
   * 好人一生平安

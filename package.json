@@ -10,19 +10,19 @@
     "eslint": "eslint src/**/*{js,vue}",
     "eslintfix": "eslint src/**/*{js,vue} --fix",
     "stylelint": "stylelint src/**/*.{html,vue,css,sass,scss}",
-    "stylelintfix": "stylelint src/**/*.{html,vue,css,sass,scss} --fix",
-    "prepare": "husky install",
-    "postinstall": "npm run prepare"
+    "stylelintfix": "stylelint src/**/*.{html,vue,css,sass,scss} --fix"
   },
-  "hooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*{js,vue}": [
-      "npm run eslint"
+      "npm run eslintfix"
     ],
     "src/**/*.{html,vue,css,sass,scss}": [
-      "npm run stylelint"
+      "npm run stylelintfix"
     ]
   },
   "dependencies": {
