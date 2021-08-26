@@ -13,4 +13,8 @@ export default defineComponent({
 <style lang="scss">
 @import './style/normalize.css';
 @import './style/var.scss';
+
+#nprogress .bar {
+  background: $--app-theme-color !important; //自定义颜色
+}
 </style>

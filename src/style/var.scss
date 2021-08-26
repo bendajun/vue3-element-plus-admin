@@ -12,10 +12,12 @@ $--app-aside-active-color: rgba(14, 185, 221, 0.5);
 $--app-header-height: 56px;
 $--app-tag-view-height: 30px;
 $--app-aside-width: 200px;
+$--app-aside-collapse-width: 65px;
 
 /* stylelint-disable */
 // 暴露给js模块的变量
 :export {
   themeColor: $--app-theme-color;
   appAsideWidth: $--app-aside-width;
+  appAsideCollapseWidth: $--app-aside-collapse-width;
 }

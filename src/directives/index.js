@@ -8,7 +8,8 @@ const modules = importAll(modulesFiles)
 export default (app) => {
   Object.entries(modules)
     .forEach(([key, directive]) => {
-      app.directive(directive.name || key, directive)
+      console.log(directive, 333)
+      app.directive(directive.name || key, directive.handler)
     })
   return app
 }

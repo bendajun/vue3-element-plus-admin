@@ -1,6 +1,6 @@
 export default {
   name: 'autofocus',
-  mounted(el) {
+  handler(el) {
     const input = el.querySelector('input')
     input && input.focus()
   }
